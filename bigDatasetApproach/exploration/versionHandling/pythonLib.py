@@ -4,11 +4,13 @@ from packaging.requirements import Requirement
 import json
 
 #Use packaging library to handle version specifiers
-v0 = Version("1.0")
+v0 = Version("1.2b1.0")
 v1 = Version("0.0.1.dev1")
 v2 = Version("0.0.1.dev2")
 v3 = Version("0.0.1.dev3")
 v4 = Version("1.1.5")
+
+print(v0.micro)
 
 print("SORTING VERSIONS")
 print(sorted([v0,v1,v2,v3,v4]))
@@ -47,7 +49,7 @@ with open("test_dependency.json","r") as file:
     else:
         print("inadaquate version")
 
-req = Requirement('mcp[cli]\u003e\u003d1.9.4')
+req = Requirement("typer>=0.16.0; extra == \"cli\"")
 print(req)
 print( {
             "name": req.name,
