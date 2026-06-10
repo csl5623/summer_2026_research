@@ -3,95 +3,78 @@ import mysql.connector
 from packaging.version import Version, parse
 from packaging.specifiers import SpecifierSet
 from packaging.requirements import Requirement
+import hashlib
 
-
-conn = mysql.connector.connect(user='root', password='carlitaxbarca',
-                              database='vulnerability_tracking', allow_local_infile=True)
-cursor = conn.cursor(buffered=True)
 
 ##instead of recursion use iterative BFS/DFS 
-def find_dependencies(name,r,):
-        dep = requirements[(name,r)]
-        req_dict = dict()
-        for d in dep:
-            req = Requirement(d)            
-            n = req.name
-            specifier = req.specifier
-            extra = req.extras
-            
-            ##this will need to be a sql query            
-            package_versions = versions.get(n, set())
-            required_dep = list(specifier.filter(list(package_versions)))
-            print("FILTEREDDDD DEPENDENCIEEEESSSS---------")
-            print(required_dep)
-            
-            if n not in req_dict:
-                req_dict[n] = []
-                
-            req_dict[n].append(required_dep)
-            for required in required_dep:
-                    if (n,required) in visited:
-                        continue
-                    visited.add((n,required))
-                    find_dependencies(n,required)
-                  
-        if (name,r) not in package_dependencies:
-            package_dependencies[(name,r)] = []
-        package_dependencies[(name,r)] = req_dict
-        
+insert_dependency = """
+INSERT INTO dependencies(parent_version_id,dependency_package_version_id)
+VALUES (%s,%s)
+"""
+def generate_id(string):
+    hash_bytes = hashlib.sha256(string.encode('utf-8')).hexdigest()
+    return hash_bytes
 
-
-def fetch_database():
+def store_dependencies(result,conn):
+    package_reqs = dict()
+    for row in result:
+        id, requirement = row
+        if requirement:
+            req = Requirement(requirement)  
+            req_name = req.name
+            if id not in package_reqs:
+                package_reqs[(id,req)] = req_name
     
-    query_fetch = "SELECT version_id,requirement FROM package_versions"
-    cursor.execute(query_fetch)
-    while True:
-        batch = cursor.fetchmany(size=5000)
-        if not batch:
-            break
-
-        explore_entire_graph(batch)
+    local_cursor = conn.cursor(buffered=True)
+    req_all_packages = list()
+    for (id,req) in package_reqs:    
+        package_name = package_reqs[(id,req)]
+        print(package_name)
+        query_fetch = f"""
+        select v.string_version as version from vulnerability_tracking.package_versions v
+        JOIN vulnerability_tracking.package_metadata p ON p.id = v.package_id
+        WHERE p.name  = (%s)
+        """
+        local_cursor.execute(query_fetch,(package_name,))
+        package_versions = local_cursor.fetchall()
+        item_list = [row[0] for row in package_versions]
+        specifier = req.specifier
+        required_dep = list(specifier.filter(item_list))
+        for i in required_dep:
+                req_all_packages.append((id,generate_id(f'{package_name}|{i}')))
     
-
-
-def explore_entire_graph(graph):
-    visited = set()
-    all_traversals = []
-
-    # The outer loop ensures NO node is left behind
-    for version_id,requirement in graph:
-        
-        if version_id in visited:
-            continue
-            
-        # Otherwise, we found a new component. Start an iterative DFS here.
-        component_path = []
-        stack = [version_id]
-        
-        while stack:
-            current = stack.pop()
-            
-            if current not in visited:
-                visited.add(current)
-
-                req = Requirement(requirement)            
-                n = req.name
-                specifier = req.specifier
-                extra = req.extras
-                
-                
-                get_packages_for_req = """
-                SELECT version_id,string_version FROM package_version joined with requirements table
+    local_cursor.close()
+    insert_cursor = conn.cursor(buffered=True)
+    insert_cursor.executemany(insert_dependency,(req_all_packages))
+    conn.commit()
+    insert_cursor.close()
+    
+    
+def fetch_database(batch_size):
+        try:
+            conn = mysql.connector.connect(user='root', password='carlitaxbarca',
+                                    database='vulnerability_tracking')
+            cur = conn.cursor(buffered=True)
+            query_fetch = f"""
+                select v.id, r.requirement from vulnerability_tracking.package_versions v
+                JOIN vulnerability_tracking.package_metadata p ON p.id = v.package_id
+                JOIN vulnerability_tracking.package_requirements r ON r.package_version_id = v.id;
                 """
+            cur.execute(query_fetch)    
+            while True:
+                    rows = cur.fetchmany(size=batch_size)
+                    if not rows:
+                        break
+                    print(f"Processing {len(rows)}")
+                    store_dependencies(rows,conn)
 
-                ##get all string versions
-                package_versions = query_result[1]
-                version_dependencies = list(specifier.filter(list(package_versions)))                
-                # Push unvisited neighbors
-                for version in version_dependencies:
-                    if version not in visited:
-                        stack.append(version)
-        
-        all_traversals.append(component_path)
+        except Exception as e:
+            print("errror")
+            print(e)
+        if cur:
+            cur.close()
+        if conn:
+            conn.close()
 
-    return all_traversals
+fetch_database(batch_size=5000)
+

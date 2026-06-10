@@ -3,13 +3,13 @@
 {"name":"0","version":"0.0.0","dependencies":[]}
 {"name":"redis","version":"2.10.5","dependencies":[]}
 {"name":"redis","version":"3.0.0","dependencies":[]}
-{"name":"typing-extensions","version":"3.7.4","dependencies":[]}
+{"name":"typing-extensions","version":"3.7.4","dependencies":["typer>=0.16.0"]}
 {"name":"typing-extensions","version":"3.7.4","dependencies":[]}
 {"name":"my-app-package","version":"1.0.0","dependencies":["mcp>=1.27.0"]}
 {"name":"mcp","version":"1.27.0","dependencies":["anyio>=4.5.0","typer>=0.16.0","rich>=13.0.0"]}
 {"name":"mcp","version":"1.27.2","dependencies":["anyio>=4.5.0","typer>=0.16.0","rich>=13.0.0"]}
 {"name":"anyio","version":"4.5.0","dependencies":["0>=4.5.0"]}
-{"name":"typer","version":"0.16.0","dependencies":["typing-extensions>3.7.4"]}
+{"name":"typer","version":"0.16.0","dependencies":["typing-extensions>=3.7.4"]}
 {"name":"typer","version":"0.17.0","dependencies":["typing-extensions>3.7.4"]}
 {"name":"rich","version":"13.0.0","dependencies":[]}
 {"name":"rich","version":"13.0.0","dependencies":[]}

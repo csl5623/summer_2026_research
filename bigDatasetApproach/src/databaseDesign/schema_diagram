@@ -1,0 +1,56 @@
+TABLE package_metadata{
+   id VARCHAR (64)
+    name VARCHAR(255)
+    is_deprecated BOOL
+    upload_time TIMESTAM
+}
+
+ TABLE package_versions{
+    id VARCHAR (64)
+    package_id VARCHAR (64) [ref : < package_metadata.id ]
+    upload_time DATETIME
+    string_version VARCHAR(2000)
+    MAJOR BIGINT
+    MINOR bigin
+    MICRO BIGINT
+    PRE INT
+    POST INT
+    EPOCH INT
+ }
+
+TABLE package_requirements{
+    id BIGINT 
+    package_version_id varchar(64) [ref : < package_versions.id ]
+    requirement text
+}
+
+
+ TABLE dependencies{
+    parent_version_id VARCHAR(64)  [ref:  <> package_versions.id]
+    dependency_package_version_id VARCHAR(64) [ref:  <> package_versions.id]
+ }
+
+ 
+
+TABLE vulnerability{
+  id VARCHAR (64) 
+    name VARCHAR(255)
+    summary VARCHAR(100)
+    details TEXT
+    modified DATETIME
+}
+    
+
+ TABLE affected_packages{
+  package_version_id BIGINT  [ref:  <> package_versions.id]
+  vulnerability_id BIGINT  [ref:  <> vulnerability.id]
+ }
+    
+
+TABLE vulnerability_tracking.vulnerability_range{
+    id  VARCHAR(64) 
+    vulnerability_id VARCHAR(64)  [ref:  > vulnerability.id]
+    introduced_pacakge_version_id VARCHAR(64) [ref:  > package_versions.id]
+    fixed_package_version_id VARCHAR(64) [ref:  > package_versions.id]
+}
+    

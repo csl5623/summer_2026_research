@@ -60,14 +60,14 @@ def handle_versions(version):
     except Exception as e:
         return []
     
-def read_json_file(zip,jsonFile):
+def read_json_file(jsonFile):
     seen_packages = set()
     packages_list = list()
     seen_versions = set()
     versions = list()   
     requirements = list()
     
-    with zip.open(jsonFile,'r') as file:
+    with open(jsonFile,'r') as file:
         for line in file:
             json_clean = line.strip()
             data = json.loads(json_clean)
@@ -142,4 +142,4 @@ def openZipFile(path):
                 
 # openZipFile(PYPI_DATA_PATH)
 
-# read_json_file("file-name-000000000000.json")
+read_json_file("file-name-000000000000.json")
