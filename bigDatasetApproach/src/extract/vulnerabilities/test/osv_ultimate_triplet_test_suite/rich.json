@@ -1,0 +1,77 @@
+[
+    {
+        "id": "GHSA-rich-1009",
+        "aliases": [
+            "CVE-2026-10009",
+            "PYSEC-2026-10009"
+        ],
+        "summary": "rich vulnerability (Primary GHSA Source)",
+        "details": "Tests corrupt version string handling. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "rich",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/rich"
+                },
+                "versions": [
+                    "13.0.0",
+                    "13.0.0fjfhjfhdjkfhdsjkf"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10009",
+        "aliases": [
+            "GHSA-rich-1009",
+            "PYSEC-2026-10009"
+        ],
+        "summary": "rich vulnerability (NVD/CVE Source)",
+        "details": "Tests corrupt version string handling. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "rich",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/rich"
+                },
+                "versions": [
+                    "13.0.0",
+                    "13.0.0fjfhjfhdjkfhdsjkf"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10009",
+        "aliases": [
+            "GHSA-rich-1009",
+            "CVE-2026-10009"
+        ],
+        "summary": "rich vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests corrupt version string handling. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "rich",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/rich"
+                },
+                "versions": [
+                    "13.0.0",
+                    "13.0.0fjfhjfhdjkfhdsjkf"
+                ]
+            }
+        ]
+    }
+]

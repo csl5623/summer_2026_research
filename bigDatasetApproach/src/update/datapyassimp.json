@@ -1,0 +1,578 @@
+{
+    "info": {
+        "author": "ASSIMP developers",
+        "author_email": "assimp-discussions@lists.sourceforge.net",
+        "bugtrack_url": null,
+        "classifiers": [],
+        "description": "PyAssimp: Python bindings for libassimp\n=======================================\n\nA simple Python wrapper for Assimp using ``ctypes`` to access the\nlibrary. Requires Python >= 2.6.\n\nPython 3 support is mostly here, but not well tested.\n\nNote that pyassimp is not complete. Many ASSIMP features are missing.\n\nUSAGE\n-----\n\nComplete example: 3D viewer\n~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n``pyassimp`` comes with a simple 3D viewer that shows how to load and\ndisplay a 3D model using a shader-based OpenGL pipeline.\n\n.. figure:: 3d_viewer_screenshot.png\n   :alt: Screenshot\n\n   Screenshot\n\nTo use it, from within ``/port/PyAssimp``:\n\n::\n\n    $ cd scripts\n    $ python ./3D-viewer <path to your model>\n\nYou can use this code as starting point in your applications.\n\nWriting your own code\n~~~~~~~~~~~~~~~~~~~~~\n\nTo get started with ``pyassimp``, examine the simpler ``sample.py``\nscript in ``scripts/``, which illustrates the basic usage. All Assimp\ndata structures are wrapped using ``ctypes``. All the data+length fields\nin Assimp's data structures (such as ``aiMesh::mNumVertices``,\n``aiMesh::mVertices``) are replaced by simple python lists, so you can\ncall ``len()`` on them to get their respective size and access members\nusing ``[]``.\n\nFor example, to load a file named ``hello.3ds`` and print the first\nvertex of the first mesh, you would do (proper error handling\nsubstituted by assertions ...):\n\n.. code:: python\n\n\n    from pyassimp import load\n    with load('hello.3ds') as scene:\n\n        assert len(scene.meshes)\n        mesh = scene.meshes[0]\n\n        assert len(mesh.vertices)\n        print(mesh.vertices[0])\n\n\nAnother example to list the 'top nodes' in a scene:\n\n.. code:: python\n\n\n    from pyassimp import load\n    with load('hello.3ds') as scene:\n\n        for c in scene.rootnode.children:\n            print(str(c))\n\n\nINSTALL\n-------\n\nInstall ``pyassimp`` by running:\n\n::\n\n    $ python setup.py install\n\nPyAssimp requires a assimp dynamic library (``DLL`` on windows, ``.so``\non linux, ``.dylib`` on macOS) in order to work. The default search\ndirectories are:\n\n-  the current directory\n-  on linux additionally: ``/usr/lib``, ``/usr/local/lib``,\n   ``/usr/lib/x86_64-linux-gnu``\n\nTo build that library, refer to the Assimp master ``INSTALL``\ninstructions. To look in more places, edit ``./pyassimp/helper.py``.\nThere's an ``additional_dirs`` list waiting for your entries.\n",
+        "description_content_type": "",
+        "docs_url": null,
+        "download_url": "",
+        "downloads": {
+            "last_day": -1,
+            "last_month": -1,
+            "last_week": -1
+        },
+        "dynamic": null,
+        "home_page": "https://github.com/assimp/assimp",
+        "keywords": "",
+        "license": "ISC",
+        "license_expression": null,
+        "license_files": null,
+        "maintainer": "S\u00e9verin Lemaignan",
+        "maintainer_email": "severin@guakamole.org",
+        "name": "pyassimp",
+        "package_url": "https://pypi.org/project/pyassimp/",
+        "platform": null,
+        "project_url": "https://pypi.org/project/pyassimp/",
+        "project_urls": {
+            "Homepage": "https://github.com/assimp/assimp"
+        },
+        "provides_extra": null,
+        "release_url": "https://pypi.org/project/pyassimp/5.2.5/",
+        "requires_dist": null,
+        "requires_python": "",
+        "summary": "Python bindings for the Open Asset Import Library (ASSIMP)",
+        "version": "5.2.5",
+        "yanked": false,
+        "yanked_reason": null
+    },
+    "last_serial": 18580006,
+    "ownership": {
+        "organization": null,
+        "roles": [
+            {
+                "role": "Owner",
+                "user": "skadge"
+            },
+            {
+                "role": "Maintainer",
+                "user": "rspencer"
+            }
+        ]
+    },
+    "releases": {
+        "0.1": [
+            {
+                "comment_text": "",
+                "digests": {
+                    "blake2b_256": "ce58f61a2ced89a1c59487c4474911aec99b35fd09b865c18cd362ebd26a7506",
+                    "md5": "ead9684f30b2f6cbf59a3ebd974e4b02",
+                    "sha256": "86787206cdbfbc7eddb77e5b13cad7fd2558e91d83ace3ac35765cd1b91f92ca"
+                },
+                "downloads": -1,
+                "filename": "pyassimp-0.1.tar.gz",
+                "has_sig": false,
+                "md5_digest": "ead9684f30b2f6cbf59a3ebd974e4b02",
+                "packagetype": "sdist",
+                "python_version": "source",
+                "requires_python": null,
+                "size": 31647,
+                "upload_time": "2016-01-04T17:39:26",
+                "upload_time_iso_8601": "2016-01-04T17:39:26.252025Z",
+                "url": "https://files.pythonhosted.org/packages/ce/58/f61a2ced89a1c59487c4474911aec99b35fd09b865c18cd362ebd26a7506/pyassimp-0.1.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
+            }
+        ],
+        "3.3": [
+            {
+                "comment_text": "",
+                "digests": {
+                    "blake2b_256": "110e451c857f1d711f023a558c40e51c28e288f6644e613dc97c7eb992864e0b",
+                    "md5": "f00db8478f3b2a976df0697c34fa5327",
+                    "sha256": "626b4db1d11adb84e4b4d27f2fd9f0ea7ddcd6a328ab5b2a989c072a6fde0c4b"
+                },
+                "downloads": -1,
+                "filename": "pyassimp-3.3.tar.gz",
+                "has_sig": false,
+                "md5_digest": "f00db8478f3b2a976df0697c34fa5327",
+                "packagetype": "sdist",
+                "python_version": "source",
+                "requires_python": null,
+                "size": 94555,
+                "upload_time": "2016-12-16T11:04:00",
+                "upload_time_iso_8601": "2016-12-16T11:04:00.807129Z",
+                "url": "https://files.pythonhosted.org/packages/11/0e/451c857f1d711f023a558c40e51c28e288f6644e613dc97c7eb992864e0b/pyassimp-3.3.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
+            }
+        ],
+        "4.1.1": [
+            {
+                "comment_text": "",
+                "digests": {
+                    "blake2b_256": "b45d3837d8c9f56f9b7ce7c32dee158335ad15255ed0ba11fdc61587f3dd69c6",
+                    "md5": "034c457dcb679b62286d8e421dda00d2",
+                    "sha256": "36e7f3df2495962008512982efc4fb69690f46709283df475a88317bf4d24604"
+                },
+                "downloads": -1,
+                "filename": "pyassimp-4.1.1.tar.gz",
+                "has_sig": false,
+                "md5_digest": "034c457dcb679b62286d8e421dda00d2",
+                "packagetype": "sdist",
+                "python_version": "source",
+                "requires_python": null,
+                "size": 96580,
+                "upload_time": "2018-05-28T22:46:59",
+                "upload_time_iso_8601": "2018-05-28T22:46:59.962656Z",
+                "url": "https://files.pythonhosted.org/packages/b4/5d/3837d8c9f56f9b7ce7c32dee158335ad15255ed0ba11fdc61587f3dd69c6/pyassimp-4.1.1.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
+            }
+        ],
+        "4.1.2": [
+            {
+                "comment_text": "",
+                "digests": {
+                    "blake2b_256": "581a85a6f9a8dabd19a4ca8ad4b688d45bcc151e53ae5a91f95c01c4313b2cdb",
+                    "md5": "92e371bd58d1fbc99d9fa3751d85b655",
+                    "sha256": "a7370c8aea36e038824f8545f00379f074e422f4e6836400c713a70ad63c042b"
+                },
+                "downloads": -1,
+                "filename": "pyassimp-4.1.2.tar.gz",
+                "has_sig": false,
+                "md5_digest": "92e371bd58d1fbc99d9fa3751d85b655",
+                "packagetype": "sdist",
+                "python_version": "source",
+                "requires_python": null,
+                "size": 96606,
+                "upload_time": "2018-05-28T22:51:47",
+                "upload_time_iso_8601": "2018-05-28T22:51:47.421333Z",
+                "url": "https://files.pythonhosted.org/packages/58/1a/85a6f9a8dabd19a4ca8ad4b688d45bcc151e53ae5a91f95c01c4313b2cdb/pyassimp-4.1.2.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
+            }
+        ],
+        "4.1.3": [
+            {
+                "comment_text": "",
+                "digests": {
+                    "blake2b_256": "b79fd327c8fce7471a5295bde4adbfb94953584ff3b36b3c46ba586e27d2be8b",
+                    "md5": "98566dcbd23c55fe9dbdad6434778bc9",
+                    "sha256": "28553d428800daf00dedb6bfce43c7d4f62c6dc553d53e9f405694e21482db3b"
+                },
+                "downloads": -1,
+                "filename": "pyassimp-4.1.3.tar.gz",
+                "has_sig": false,
+                "md5_digest": "98566dcbd23c55fe9dbdad6434778bc9",
+                "packagetype": "sdist",
+                "python_version": "source",
+                "requires_python": null,
+                "size": 106169,
+                "upload_time": "2018-05-29T09:48:50",
+                "upload_time_iso_8601": "2018-05-29T09:48:50.758773Z",
+                "url": "https://files.pythonhosted.org/packages/b7/9f/d327c8fce7471a5295bde4adbfb94953584ff3b36b3c46ba586e27d2be8b/pyassimp-4.1.3.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
+            }
+        ],
+        "4.1.4": [
+            {
+                "comment_text": "",
+                "digests": {
+                    "blake2b_256": "604995560c2e694fa5bcbe885bdd4656948d083d67ee2adb0378e7d15637df4f",
+                    "md5": "682f1583e7d8e130fe70bf754721dcb5",
+                    "sha256": "266bd4be170d46065b8c2ad0f5396dad10938a6bbf9a566c4e4d56456e33aa6a"
+                },
+                "downloads": -1,
+                "filename": "pyassimp-4.1.4.tar.gz",
+                "has_sig": false,
+                "md5_digest": "682f1583e7d8e130fe70bf754721dcb5",
+                "packagetype": "sdist",
+                "python_version": "source",
+                "requires_python": null,
+                "size": 98275,
+                "upload_time": "2019-01-30T22:41:56",
+                "upload_time_iso_8601": "2019-01-30T22:41:56.270805Z",
+                "url": "https://files.pythonhosted.org/packages/60/49/95560c2e694fa5bcbe885bdd4656948d083d67ee2adb0378e7d15637df4f/pyassimp-4.1.4.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
+            }
+        ],
+        "5.2.5": [
+            {
+                "comment_text": "",
+                "digests": {
+                    "blake2b_256": "995ff5577fe7f48be4d2bdf7e3284285469da80b99e4a4c34d4c927466317053",
+                    "md5": "7f244e59e537849051b61a3c3b5cbb18",
+                    "sha256": "107d93780e4300d70698c4291c54dd32ff78e8cf0dafd56ac1801cd0260c36f3"
+                },
+                "downloads": -1,
+                "filename": "pyassimp-5.2.5.tar.gz",
+                "has_sig": false,
+                "md5_digest": "7f244e59e537849051b61a3c3b5cbb18",
+                "packagetype": "sdist",
+                "python_version": "source",
+                "requires_python": null,
+                "size": 101072,
+                "upload_time": "2023-06-20T20:31:27",
+                "upload_time_iso_8601": "2023-06-20T20:31:27.180577Z",
+                "url": "https://files.pythonhosted.org/packages/99/5f/f5577fe7f48be4d2bdf7e3284285469da80b99e4a4c34d4c927466317053/pyassimp-5.2.5.tar.gz",
+                "yanked": false,
+                "yanked_reason": null
+            }
+        ]
+    },
+    "urls": [
+        {
+            "comment_text": "",
+            "digests": {
+                "blake2b_256": "995ff5577fe7f48be4d2bdf7e3284285469da80b99e4a4c34d4c927466317053",
+                "md5": "7f244e59e537849051b61a3c3b5cbb18",
+                "sha256": "107d93780e4300d70698c4291c54dd32ff78e8cf0dafd56ac1801cd0260c36f3"
+            },
+            "downloads": -1,
+            "filename": "pyassimp-5.2.5.tar.gz",
+            "has_sig": false,
+            "md5_digest": "7f244e59e537849051b61a3c3b5cbb18",
+            "packagetype": "sdist",
+            "python_version": "source",
+            "requires_python": null,
+            "size": 101072,
+            "upload_time": "2023-06-20T20:31:27",
+            "upload_time_iso_8601": "2023-06-20T20:31:27.180577Z",
+            "url": "https://files.pythonhosted.org/packages/99/5f/f5577fe7f48be4d2bdf7e3284285469da80b99e4a4c34d4c927466317053/pyassimp-5.2.5.tar.gz",
+            "yanked": false,
+            "yanked_reason": null
+        }
+    ],
+    "vulnerabilities": [
+        {
+            "aliases": [
+                "CVE-2024-48423"
+            ],
+            "details": "An issue in assimp v.5.4.3 allows a local attacker to execute arbitrary code via the CallbackToLogRedirector function within the Assimp library.",
+            "fixed_in": [],
+            "id": "PYSEC-2024-120",
+            "link": "https://osv.dev/vulnerability/PYSEC-2024-120",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-3549"
+            ],
+            "details": "A vulnerability, which was classified as critical, was found in Open Asset Import Library Assimp 5.4.3. Affected is the function Assimp::MD3Importer::ValidateSurfaceHeaderOffsets of the file code/AssetLib/MD3/MD3Loader.cpp of the component File Handler. The manipulation leads to heap-based buffer overflow. The attack needs to be approached locally. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-171",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-171",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-5165"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3 and classified as problematic. This issue affects the function MDCImporter::ValidateSurfaceHeader of the file assimp/code/AssetLib/MDC/MDCLoader.cpp. The manipulation of the argument pcSurface2 leads to out-of-bounds read. Attacking locally is a requirement. The exploit has been disclosed to the public and may be used. The project decided to collect all Fuzzer bugs in a main-issue to address them in the future.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-172",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-172",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2751"
+            ],
+            "details": "A vulnerability has been found in Open Asset Import Library Assimp 5.4.3 and classified as problematic. This vulnerability affects the function Assimp::CSMImporter::InternReadFile of the file code/AssetLib/CSM/CSMLoader.cpp of the component CSM File Handler. The manipulation of the argument na leads to out-of-bounds read. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-162",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-162",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2024-48425"
+            ],
+            "details": "A segmentation fault (SEGV) was detected in the Assimp::SplitLargeMeshesProcess_Triangle::UpdateNode function within the Assimp library during fuzz testing using AddressSanitizer. The crash occurs due to a read access violation at address 0x000000000460, which points to the zero page, indicating a null or invalid pointer dereference.",
+            "fixed_in": [],
+            "id": "PYSEC-2024-293",
+            "link": "https://osv.dev/vulnerability/PYSEC-2024-293",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2753"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3. It has been classified as critical. Affected is the function SceneCombiner::MergeScenes of the file code/AssetLib/LWS/LWSLoader.cpp of the component LWS File Handler. The manipulation leads to out-of-bounds read. It is possible to launch the attack remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-164",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-164",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-11275"
+            ],
+            "details": "A vulnerability was identified in Open Asset Import Library Assimp 6.0.2. Affected by this vulnerability is the function ODDLParser::getNextSeparator in the library assimp/contrib/openddlparser/include/openddlparser/OpenDDLParserUtils.h. Such manipulation leads to heap-based buffer overflow. The attack must be carried out locally. The exploit is publicly available and might be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-156",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-156",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2151"
+            ],
+            "details": "A vulnerability classified as critical was found in Open Asset Import Library Assimp 5.4.3. This vulnerability affects the function Assimp::GetNextLine in the library ParsingUtils.h of the component File Handler. The manipulation leads to stack-based buffer overflow. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-158",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-158",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2755"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3. It has been rated as critical. Affected by this issue is the function Assimp::AC3DImporter::ConvertObjectSection of the file code/AssetLib/AC/ACLoader.cpp of the component AC3D File Handler. The manipulation of the argument src.entries leads to out-of-bounds read. The attack may be launched remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-166",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-166",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2752"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3 and classified as problematic. This issue affects the function fast_atoreal_move in the library include/assimp/fast_atof.h of the component CSM File Handler. The manipulation leads to out-of-bounds read. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-163",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-163",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2757"
+            ],
+            "details": "A vulnerability classified as critical was found in Open Asset Import Library Assimp 5.4.3. This vulnerability affects the function AI_MD5_PARSE_STRING_IN_QUOTATION of the file code/AssetLib/MD5/MD5Parser.cpp of the component MD5 File Handler. The manipulation of the argument data leads to heap-based buffer overflow. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-168",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-168",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-11277"
+            ],
+            "details": "A weakness has been identified in Open Asset Import Library Assimp 6.0.2. This affects the function Q3DImporter::InternReadFile of the file assimp/code/AssetLib/Q3D/Q3DLoader.cpp. Executing a manipulation can lead to heap-based buffer overflow. The attack needs to be launched locally. The exploit has been made available to the public and could be used for attacks.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-157",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-157",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2152"
+            ],
+            "details": "A vulnerability, which was classified as critical, has been found in Open Asset Import Library Assimp 5.4.3. This issue affects the function Assimp::BaseImporter::ConvertToUTF8 of the file BaseImporter.cpp of the component File Handler. The manipulation leads to heap-based buffer overflow. The attack may be initiated remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-159",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-159",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2024-46632"
+            ],
+            "details": "Assimp v5.4.3 is vulnerable to Buffer Overflow via the MD5Importer::LoadMD5MeshFile function.",
+            "fixed_in": [],
+            "id": "PYSEC-2024-291",
+            "link": "https://osv.dev/vulnerability/PYSEC-2024-291",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2024-53425"
+            ],
+            "details": "A heap-buffer-overflow vulnerability was discovered in the SkipSpacesAndLineEnd function in Assimp v5.4.3. This issue occurs when processing certain malformed MD5 model files, leading to an out-of-bounds read and potential application crash.",
+            "fixed_in": [],
+            "id": "PYSEC-2024-295",
+            "link": "https://osv.dev/vulnerability/PYSEC-2024-295",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2750"
+            ],
+            "details": "A vulnerability, which was classified as critical, was found in Open Asset Import Library Assimp 5.4.3. This affects the function Assimp::CSMImporter::InternReadFile of the file code/AssetLib/CSM/CSMLoader.cpp of the component CSM File Handler. The manipulation leads to out-of-bounds write. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-161",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-161",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2024-48424"
+            ],
+            "details": "A heap-buffer-overflow vulnerability has been identified in the OpenDDLParser::parseStructure function within the Assimp library, specifically during the processing of OpenGEX files.",
+            "fixed_in": [],
+            "id": "PYSEC-2024-292",
+            "link": "https://osv.dev/vulnerability/PYSEC-2024-292",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2024-48426"
+            ],
+            "details": "A segmentation fault (SEGV) was detected in the SortByPTypeProcess::Execute function in the Assimp library during fuzz testing with AddressSanitizer. The crash occurred due to a read access to an invalid memory address (0x1000c9714971).",
+            "fixed_in": [],
+            "id": "PYSEC-2024-294",
+            "link": "https://osv.dev/vulnerability/PYSEC-2024-294",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-11274"
+            ],
+            "details": "A vulnerability was determined in Open Asset Import Library Assimp 6.0.2. Affected is the function Q3DImporter::InternReadFile of the file assimp/code/AssetLib/Q3D/Q3DLoader.cpp. This manipulation causes allocation of resources. The attack is restricted to local execution. The exploit has been publicly disclosed and may be utilized.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-155",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-155",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2591"
+            ],
+            "details": "A vulnerability classified as problematic was found in Open Asset Import Library Assimp 5.4.3. This vulnerability affects the function MDLImporter::InternReadFile_Quake1 of the file code/AssetLib/MDL/MDLLoader.cpp. The manipulation of the argument skinwidth/skinheight leads to divide by zero. The attack can be initiated remotely. The exploit has been disclosed to the public and may be used. The patch is identified as ab66a1674fcfac87aaba4c8b900b315ebc3e7dbd. It is recommended to apply a patch to fix this issue.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-160",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-160",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2756"
+            ],
+            "details": "A vulnerability classified as critical has been found in Open Asset Import Library Assimp 5.4.3. This affects the function Assimp::AC3DImporter::ConvertObjectSection of the file code/AssetLib/AC/ACLoader.cpp of the component AC3D File Handler. The manipulation of the argument tmp leads to heap-based buffer overflow. It is possible to initiate the attack remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-167",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-167",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-5166"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3. It has been classified as problematic. Affected is the function MDCImporter::InternReadFile of the file assimp/code/AssetLib/MDC/MDCLoader.cpp of the component MDC File Parser. The manipulation of the argument pcVerts leads to out-of-bounds read. It is possible to launch the attack on the local host. The exploit has been disclosed to the public and may be used. The project decided to collect all Fuzzer bugs in a main-issue to address them in the future.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-173",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-173",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-2754"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3. It has been declared as critical. Affected by this vulnerability is the function Assimp::AC3DImporter::ConvertObjectSection of the file code/AssetLib/AC/ACLoader.cpp of the component AC3D File Handler. The manipulation of the argument it leads to heap-based buffer overflow. The attack can be launched remotely. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-165",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-165",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-5169"
+            ],
+            "details": "A vulnerability classified as problematic has been found in Open Asset Import Library Assimp 5.4.3. This affects the function MDLImporter::InternReadFile_3DGS_MDL345 of the file assimp/code/AssetLib/MDL/MDLLoader.cpp. The manipulation leads to out-of-bounds read. Local access is required to approach this attack. The exploit has been disclosed to the public and may be used. The project decided to collect all Fuzzer bugs in a main-issue to address them in the future.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-176",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-176",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-5167"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3. It has been declared as problematic. Affected by this vulnerability is the function LWOImporter::GetS0 in the library assimp/code/AssetLib/LWO/LWOLoader.h. The manipulation of the argument out leads to out-of-bounds read. The attack needs to be approached locally. The exploit has been disclosed to the public and may be used. The project decided to collect all Fuzzer bugs in a main-issue to address them in the future.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-174",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-174",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-3196"
+            ],
+            "details": "A vulnerability, which was classified as critical, was found in Open Asset Import Library Assimp 5.4.3. Affected is the function Assimp::MD2Importer::InternReadFile in the library code/AssetLib/MD2/MD2Loader.cpp of the component Malformed File Handler. The manipulation of the argument Name leads to stack-based buffer overflow. The attack needs to be approached locally. The exploit has been disclosed to the public and may be used. It is recommended to upgrade the affected component.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-170",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-170",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-5168"
+            ],
+            "details": "A vulnerability was found in Open Asset Import Library Assimp 5.4.3. It has been rated as problematic. Affected by this issue is the function MDLImporter::ImportUVCoordinate_3DGS_MDL345 of the file assimp/code/AssetLib/MDL/MDLLoader.cpp. The manipulation of the argument iIndex leads to out-of-bounds read. An attack has to be approached locally. The exploit has been disclosed to the public and may be used. The project decided to collect all Fuzzer bugs in a main-issue to address them in the future.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-175",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-175",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        },
+        {
+            "aliases": [
+                "CVE-2025-3158"
+            ],
+            "details": "A vulnerability, which was classified as critical, has been found in Open Asset Import Library Assimp 5.4.3. Affected by this issue is the function Assimp::LWO::AnimResolver::UpdateAnimRangeSetup of the file code/AssetLib/LWO/LWOAnimation.cpp of the component LWO File Handler. The manipulation leads to heap-based buffer overflow. It is possible to launch the attack on the local host. The exploit has been disclosed to the public and may be used.",
+            "fixed_in": [],
+            "id": "PYSEC-2025-169",
+            "link": "https://osv.dev/vulnerability/PYSEC-2025-169",
+            "source": "osv",
+            "summary": null,
+            "withdrawn": null
+        }
+    ]
+}

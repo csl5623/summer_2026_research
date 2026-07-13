@@ -1,0 +1,107 @@
+[
+    {
+        "id": "GHSA-redis-1003",
+        "aliases": [
+            "CVE-2026-10003",
+            "PYSEC-2026-10003"
+        ],
+        "summary": "redis vulnerability (Primary GHSA Source)",
+        "details": "Tests open-ended vulnerabilities without a fixed event. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "redis",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/redis"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "2.10.5"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "2.10.5",
+                    "3.0.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10003",
+        "aliases": [
+            "GHSA-redis-1003",
+            "PYSEC-2026-10003"
+        ],
+        "summary": "redis vulnerability (NVD/CVE Source)",
+        "details": "Tests open-ended vulnerabilities without a fixed event. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "redis",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/redis"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "2.10.5"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "2.10.5",
+                    "3.0.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10003",
+        "aliases": [
+            "GHSA-redis-1003",
+            "CVE-2026-10003"
+        ],
+        "summary": "redis vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests open-ended vulnerabilities without a fixed event. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "redis",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/redis"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "2.10.5"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "2.10.5",
+                    "3.0.0"
+                ]
+            }
+        ]
+    }
+]

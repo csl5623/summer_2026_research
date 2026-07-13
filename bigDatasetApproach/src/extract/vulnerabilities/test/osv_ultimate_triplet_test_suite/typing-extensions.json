@@ -1,0 +1,74 @@
+[
+    {
+        "id": "GHSA-typingextensions-1004",
+        "aliases": [
+            "CVE-2026-10004",
+            "PYSEC-2026-10004"
+        ],
+        "summary": "typing-extensions vulnerability (Primary GHSA Source)",
+        "details": "Tests exact version matching without ecosystem ranges. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "typing-extensions",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/typing-extensions"
+                },
+                "versions": [
+                    "3.7.4"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10004",
+        "aliases": [
+            "GHSA-typingextensions-1004",
+            "PYSEC-2026-10004"
+        ],
+        "summary": "typing-extensions vulnerability (NVD/CVE Source)",
+        "details": "Tests exact version matching without ecosystem ranges. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "typing-extensions",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/typing-extensions"
+                },
+                "versions": [
+                    "3.7.4"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10004",
+        "aliases": [
+            "GHSA-typingextensions-1004",
+            "CVE-2026-10004"
+        ],
+        "summary": "typing-extensions vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests exact version matching without ecosystem ranges. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "typing-extensions",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/typing-extensions"
+                },
+                "versions": [
+                    "3.7.4"
+                ]
+            }
+        ]
+    }
+]

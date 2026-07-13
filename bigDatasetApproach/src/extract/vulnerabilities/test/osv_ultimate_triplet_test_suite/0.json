@@ -1,0 +1,113 @@
+[
+    {
+        "id": "GHSA-0-1002",
+        "aliases": [
+            "CVE-2026-10002",
+            "PYSEC-2026-10002"
+        ],
+        "summary": "0 vulnerability (Primary GHSA Source)",
+        "details": "Tests string coercion for literal '0' and '0.0.0'. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "0",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/0"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "0.0.0"
+                            },
+                            {
+                                "fixed": "0.0.1"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "0.0.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10002",
+        "aliases": [
+            "GHSA-0-1002",
+            "PYSEC-2026-10002"
+        ],
+        "summary": "0 vulnerability (NVD/CVE Source)",
+        "details": "Tests string coercion for literal '0' and '0.0.0'. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "0",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/0"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "0.0.0"
+                            },
+                            {
+                                "fixed": "0.0.1"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "0.0.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10002",
+        "aliases": [
+            "GHSA-0-1002",
+            "CVE-2026-10002"
+        ],
+        "summary": "0 vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests string coercion for literal '0' and '0.0.0'. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "0",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/0"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "0.0.0"
+                            },
+                            {
+                                "fixed": "0.0.1"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "0.0.0"
+                ]
+            }
+        ]
+    }
+]

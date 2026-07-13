@@ -1,0 +1,125 @@
+[
+    {
+        "id": "GHSA-mcp-1006",
+        "aliases": [
+            "CVE-2026-10006",
+            "PYSEC-2026-10006"
+        ],
+        "summary": "mcp vulnerability (Primary GHSA Source)",
+        "details": "Tests disjoint regression intervals. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "mcp",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/mcp"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "1.26.0"
+                            },
+                            {
+                                "fixed": "1.27.1"
+                            },
+                            {
+                                "introduced": "1.27.2"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "1.27.0",
+                    "1.27.2"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10006",
+        "aliases": [
+            "GHSA-mcp-1006",
+            "PYSEC-2026-10006"
+        ],
+        "summary": "mcp vulnerability (NVD/CVE Source)",
+        "details": "Tests disjoint regression intervals. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "mcp",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/mcp"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "1.26.0"
+                            },
+                            {
+                                "fixed": "1.27.1"
+                            },
+                            {
+                                "introduced": "1.27.2"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "1.27.0",
+                    "1.27.2"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10006",
+        "aliases": [
+            "GHSA-mcp-1006",
+            "CVE-2026-10006"
+        ],
+        "summary": "mcp vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests disjoint regression intervals. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "mcp",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/mcp"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "1.26.0"
+                            },
+                            {
+                                "fixed": "1.27.1"
+                            },
+                            {
+                                "introduced": "1.27.2"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "1.27.0",
+                    "1.27.2"
+                ]
+            }
+        ]
+    }
+]

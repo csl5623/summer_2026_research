@@ -1,0 +1,116 @@
+[
+    {
+        "id": "GHSA-0coreclient-1001",
+        "aliases": [
+            "CVE-2026-10001",
+            "PYSEC-2026-10001"
+        ],
+        "summary": "0-core-client vulnerability (Primary GHSA Source)",
+        "details": "Tests PEP 440 pre-release boundaries. This array contains GHSA, CVE, and PYSEC records as full standalone objects referencing each other.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "0-core-client",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/0-core-client"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "1.1.0a0"
+                            },
+                            {
+                                "fixed": "1.1.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "1.1.0a0",
+                    "1.1.0a8"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10001",
+        "aliases": [
+            "GHSA-0coreclient-1001",
+            "PYSEC-2026-10001"
+        ],
+        "summary": "0-core-client vulnerability (NVD/CVE Source)",
+        "details": "Tests PEP 440 pre-release boundaries. This array contains GHSA, CVE, and PYSEC records as full standalone objects referencing each other.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "0-core-client",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/0-core-client"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "1.1.0a0"
+                            },
+                            {
+                                "fixed": "1.1.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "1.1.0a0",
+                    "1.1.0a8"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10001",
+        "aliases": [
+            "GHSA-0coreclient-1001",
+            "CVE-2026-10001"
+        ],
+        "summary": "0-core-client vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests PEP 440 pre-release boundaries. This array contains GHSA, CVE, and PYSEC records as full standalone objects referencing each other.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "0-core-client",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/0-core-client"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "1.1.0a0"
+                            },
+                            {
+                                "fixed": "1.1.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "1.1.0a0",
+                    "1.1.0a8"
+                ]
+            }
+        ]
+    }
+]

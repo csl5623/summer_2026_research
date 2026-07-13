@@ -1,0 +1,113 @@
+[
+    {
+        "id": "GHSA-typer-1008",
+        "aliases": [
+            "CVE-2026-10008",
+            "PYSEC-2026-10008"
+        ],
+        "summary": "typer vulnerability (Primary GHSA Source)",
+        "details": "Tests inclusive bounds using last_affected. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "typer",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/typer"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "0.0.0"
+                            },
+                            {
+                                "last_affected": "0.16.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "0.16.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10008",
+        "aliases": [
+            "GHSA-typer-1008",
+            "PYSEC-2026-10008"
+        ],
+        "summary": "typer vulnerability (NVD/CVE Source)",
+        "details": "Tests inclusive bounds using last_affected. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "typer",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/typer"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "0.0.0"
+                            },
+                            {
+                                "last_affected": "0.16.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "0.16.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10008",
+        "aliases": [
+            "GHSA-typer-1008",
+            "CVE-2026-10008"
+        ],
+        "summary": "typer vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests inclusive bounds using last_affected. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "typer",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/typer"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "0.0.0"
+                            },
+                            {
+                                "last_affected": "0.16.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "0.16.0"
+                ]
+            }
+        ]
+    }
+]

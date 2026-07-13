@@ -3,7 +3,6 @@
 import glob
 import os
 import re
-import pandas
 import hashlib
 
 import json
@@ -25,7 +24,8 @@ basepath = os.path.dirname(__file__)
 
 DATA_DIRECTORY = "initial_data"
 PYPI_DATA_ZIP = "pypi_metadata.zip"
-PYPI_DATA_PATH = os.path.abspath(os.path.join(basepath, '..', DATA_DIRECTORY,PYPI_DATA_ZIP))
+PYPI_DATA_PATH = os.path.abspath(os.path.join(basepath, '../..', DATA_DIRECTORY,PYPI_DATA_ZIP))
+print(PYPI_DATA_PATH)
 CSV_DIRECTORY_PATH = os.path.abspath(os.path.join(basepath, "csv"))
 BATCH_SIZE = 5000
 
@@ -50,35 +50,42 @@ def generate_id(string):
     hash_bytes = hashlib.sha256(string.encode('utf-8')).hexdigest()
     return hash_bytes
 
+def id_uuiid(string):
+    
+    pass
+
 def handle_versions(version):
     try:
         v = parse(version)
         major = v.major
         minor = v.minor
         micro = v.micro
-        return [int(major),int(minor),int(micro)]
+        return [str(v),int(major),int(minor),int(micro)]
     except Exception as e:
         return []
+
     
-def read_json_file(jsonFile):
+def read_json_file(zip,jsonFile):
     seen_packages = set()
     packages_list = list()
     seen_versions = set()
     versions = list()   
     requirements = list()
     
-    with open(jsonFile,'r') as file:
+    with zip.open(jsonFile,'r') as file:
         for line in file:
             json_clean = line.strip()
             data = json.loads(json_clean)
             name = normalize(data.get("name"))
             v = data.get("version")
             version = handle_versions(v)
+            if len(version) <=0:
+                continue
+            v = version[0]
             req = data.get("dependencies",[])
             
             if name not in seen_packages:
                 seen_packages.add(name)
-                id = generate_id(name)
                 packages_list.append((id,name,))
             
             if (name,v) not in seen_versions:
@@ -89,9 +96,9 @@ def read_json_file(jsonFile):
                         "id" : v_id,
                         "package_id" : generate_id(name),
                         "version": v,
-                        "major":version[0],
-                        "minor":version[1],
-                        "micro":version[2]
+                        "major":version[1],
+                        "minor":version[2],
+                        "micro":version[3]
                     })
                     
                     if len(req) <= 0:
@@ -139,7 +146,9 @@ def openZipFile(path):
                 continue
             if i.endswith(".json"):
                 read_json_file(zip,i)
-                
+        cursor.close()
+        conn.close()
+    print("FINISHED LOADING ALL DATA :)-----")  
+             
 # openZipFile(PYPI_DATA_PATH)
 
-read_json_file("file-name-000000000000.json")

@@ -1,0 +1,113 @@
+[
+    {
+        "id": "GHSA-anyio-1007",
+        "aliases": [
+            "CVE-2026-10007",
+            "PYSEC-2026-10007"
+        ],
+        "summary": "anyio vulnerability (Primary GHSA Source)",
+        "details": "Tests standard framework boundaries. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T12:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "anyio",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/anyio"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "4.0.0"
+                            },
+                            {
+                                "fixed": "4.6.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "4.5.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "CVE-2026-10007",
+        "aliases": [
+            "GHSA-anyio-1007",
+            "PYSEC-2026-10007"
+        ],
+        "summary": "anyio vulnerability (NVD/CVE Source)",
+        "details": "Tests standard framework boundaries. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T13:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "anyio",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/anyio"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "4.0.0"
+                            },
+                            {
+                                "fixed": "4.6.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "4.5.0"
+                ]
+            }
+        ]
+    },
+    {
+        "id": "PYSEC-2026-10007",
+        "aliases": [
+            "GHSA-anyio-1007",
+            "CVE-2026-10007"
+        ],
+        "summary": "anyio vulnerability (PyPA/PYSEC Source)",
+        "details": "Tests standard framework boundaries. Array contains complete GHSA, CVE, and PYSEC records.",
+        "schema_version": "1.7.3",
+        "modified": "2026-06-11T14:00:00Z",
+        "published": "2026-06-11T12:00:00Z",
+        "affected": [
+            {
+                "package": {
+                    "name": "anyio",
+                    "ecosystem": "PyPI",
+                    "purl": "pkg:pypi/anyio"
+                },
+                "ranges": [
+                    {
+                        "type": "ECOSYSTEM",
+                        "events": [
+                            {
+                                "introduced": "4.0.0"
+                            },
+                            {
+                                "fixed": "4.6.0"
+                            }
+                        ]
+                    }
+                ],
+                "versions": [
+                    "4.5.0"
+                ]
+            }
+        ]
+    }
+]

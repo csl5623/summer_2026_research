@@ -26,7 +26,7 @@ cursor = conn.cursor(buffered=True)
 
 ##add is deleted column to table
 query = """
-select DISTINCT name from vulnerability_tracking.package_metadata;
+select name from package_metadata_v2;
 """
 cursor.execute(query)
 data = cursor.fetchall()
@@ -39,16 +39,34 @@ DELETED_PACKAGES = DATABASE_SET - SIMPLE_API_SET
 print(len(DELETED_PACKAGES))
 
 MISSING_PACKAGES = SIMPLE_API_SET - DATABASE_SET
-print(len(MISSING_PACKAGES))
 
+def normalize(name):
+    return re.sub(r"[-_.]+", "-", name).lower()
+
+for m in MISSING_PACKAGES:
+   name = normalize(m)
+   print(name)
+   
+   ##call the json api
+   ##and get their data and versions into database
+
+##for the delete packages,
+##get them into database
+
+
+##get new versions
+##call the pippy json api and get latest releases
 
 # ##call the JSON API for all this packages
 # for package in MISSING_PACKAGES:
-#     JSON_API_END_POINT = 'https://pypi.org/pypi/'+ package + '/json'
-#     response = requests.get(JSON_API_END_POINT)
-#     json_object = response.json()
-#     with open(f"data{package}.json","w") as file:
-#         json.dump(json_object,file,indent=4)
+
+# package="pyassimp"
+# JSON_API_END_POINT = 'https://pypi.org/pypi/'+ package + '/json'
+# response = requests.get(JSON_API_END_POINT)
+# json_object = response.json()
+# with open(f"data{package}.json","w") as file:
+#    json.dump(json_object,file,indent=4)
+   
     
 ##process their dependencies
 ##get vulnerabilities
