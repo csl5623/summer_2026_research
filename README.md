@@ -1,2 +1,2 @@
 
-### Finding Pypu Vulnerabilities
+### Finding Pypi Vulnerabilities
