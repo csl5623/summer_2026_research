@@ -295,14 +295,38 @@ public class SQLRepository {
             }
 
             }
-            
-
-            
+        
             
         } catch (Exception e) {
             e.printStackTrace();
         }
 
         return lastAffected;
+    }
+
+
+    public List<Map<String, Object>> vulnerabilityAffectPackageVersion(){
+
+        List<Map<String, Object>> affectedVersions = new ArrayList<>();
+
+        try (Statement stm = conn.createStatement();){
+            stm.setFetchSize(100);
+            try(ResultSet rs = stm.executeQuery(
+            "select vulnerability_id, package_version_id from affected_packages_v2");)
+            {
+                while(rs.next()){
+                    HashMap<String,Object> map = new HashMap<>();
+                    map.put("vuln_id",rs.getString("vulnerability_id"));
+                    map.put("version_id",rs.getInt("package_version_id"));
+                    affectedVersions.add(map);
+            }
+
+            }
+          
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return affectedVersions;
     }
 }

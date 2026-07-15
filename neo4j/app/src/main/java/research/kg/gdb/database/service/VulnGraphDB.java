@@ -13,74 +13,42 @@ import org.neo4j.graphdb.Transaction;
 import research.kg.gdb.database.repository.SQLRepository;
 import research.kg.gdb.database.repository.Neo4jConfig;
 
+import org.neo4j.graphdb.Transaction;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import org.neo4j.graphdb.GraphDatabaseService;
+
 
 
 import research.kg.gdb.database.model.Package;
 
 public class VulnGraphDB {
 
-	public static void oldCode(SQLRepository sqlrepo ,Neo4jConfig neo4jConfig){
-		GraphDatabaseService db = neo4jConfig.getGraphDB();
-
-		//queries for getting packages
-		List<Package> p = sqlrepo.getAllpackages();
-		//queries for creating nodes
-
-		var createPackageNodes = 
-            "UNWIND $packages AS row\n" + 
-            "CREATE (p:Package {id: row.id ,name: row.name })"
-        ;
-        
-		List<Map<String, Object>> package_nodes = new ArrayList<>();
-		for (Package pck: p){
-			Map<String, Object> map = Map.of(
-			"id", pck.getId(),
-			"name", (String) pck.getName()
-			);
-			package_nodes.add(map);
-		}
-		
-		try (Transaction tx = db.beginTx()){
-			Result result2 = tx.execute(createPackageNodes,Map.of("packages",package_nodes));
-			System.out.println(result2.resultAsString());
-			tx.commit();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		String versions_query = """
-        UNWIND $versions AS row 
-		MATCH (p: Package {id: row.package_name_id}) 
-		CREATE (p)-[:HAS]->(v:Version {id:row.id, string_version:row.string_version, order_number:row.sequence_order})    
-        """;
-
-		List<Map<String, Object>> versionsMap = sqlrepo.getAllVersions();
-		int batchSize = 100;
-		
-		//send data to neo4j in batches?? to fix outofmemory error
-		for (int i = 0; i < versionsMap.size(); i += batchSize) {
-            int end = Math.min(versionsMap.size(), i + batchSize);
-            
-            List<Map<String, Object>> batch = versionsMap.subList(i, end);
-            
-			try (Transaction tx = db.beginTx()){
-				Result result2 = tx.execute(versions_query,Map.of("versions",batch));
-				System.out.println(result2.resultAsString());
-				tx.commit();
-
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-
-			 System.out.println("done with batch");
-           
-        }
-
-		neo4jConfig.shutdown();
+	public static void migrateInfo(SQLRepository sqlrepo,Neo4jConfig neo4jConfig){
+		MigrateNeo4j migrate = new MigrateNeo4j(sqlrepo, neo4jConfig);
+		System.out.println("Creating indexes");
+		migrate.createIndexes();
+		System.out.println("Creating pacakge");
+		migrate.createPackageNodes();
+		migrate.createVersionNodes();
+		System.out.println("Creating package on pacakge relationship");
+		migrate.PackageOnPackageRelationship();
+		System.out.println("creating version on package");
+		migrate.versionOnPackageRelationship();
+		System.out.println("vulnerabilities");
+		migrate.createVulnNodes();
+		migrate.vulnOnPackageRel();
+		System.out.println("creating vuln relationships");
+		migrate.vulnIntroducedRel();
+		migrate.vulnLastAffected();
+		migrate.vulnFixedRel();
+		migrate.vulnerabilityAffectPackageVersion();
+		migrate.shutDownNeo4j();
 	}
 
+	
 	public static void main(String[] args) {
 		final String neo4jFolder = "DB_FOLDER", database = "database";
 		
@@ -95,28 +63,46 @@ public class VulnGraphDB {
 		}
 		SQLRepository sqlrepo = new SQLRepository(conn);
 		Neo4jConfig neo4jConfig = new Neo4jConfig(neo4jFolder, database);
+		// MigrateNeo4j migrate = new MigrateNeo4j(sqlrepo, neo4jConfig);
+		// migrate.vulnerabilityAffectPackageVersion();
 		
-		MigrateNeo4j migrate = new MigrateNeo4j(sqlrepo, neo4jConfig);
+		Map<String, Object> parameters = new HashMap<>();
+		// envdrift
+		// pydantic
+        parameters.put("package","envdrift");
+        parameters.put("version","10.8.0");
+        
+		String query = """
 
-		// System.out.println("Creating indexes");
-		// migrate.createIndexes();
-		// System.out.println("Creating pacakge");
-		// migrate.createPackageNodes();
-		// migrate.createVersionNodes();
-		// System.out.println("Creating package on pacakge relationship");
-		// migrate.PackageOnPackageRelationship();
-		// // System.out.println("creating version on package");
-		// // migrate.versionOnPackageRelationship();
-		// System.out.println("vulnerabilities");
-		// migrate.createVulnNodes();
-		// migrate.vulnOnPackageRel();
-		// System.out.println("creating vuln relationships");
-		// migrate.vulnIntroducedRel();
-		// migrate.vulnLastAffected();
-		// migrate.vulnFixedRel();
-		// migrate.exportDatabase("vulnDB");
-		migrate.shutDownNeo4j();
+		MATCH (p:Package {name: $package})-[:HAS]->(v:Version {string_version: $version})
 		
+		MATCH path = (v) (
+			(src)-[r:REQUIRES]->(d:Package)-[:HAS]->(dep:Version)
+			WHERE r.version_lower_bound <= dep.order_number <= r.version_upper_bound
+		){1}
+
+		UNWIND dep as individualDep
+		MATCH (vuln:Vulnerability)-[:AFFECTS_VERSION]->(individualDep)
+		MATCH (depPackage:Package)-[:HAS]->(individualDep)
+
+		return depPackage.name, vuln.id, individualDep.string_version
+		""";
+
+		String query2 = """
+
+		
+
+		MATCH (vuln:Vulnerability)-[:AFFECTS]->(p:Package {name: $package})
+		return vuln.id
+		""";
+
+	// lsof /Users/carlalopez/dev/summer_research/summer_2026_research/neo4j/DB_FOLDER/database/data/databases/store_lock
+    	try (Transaction tx = neo4jConfig.getGraphDB().beginTx()){
+			Result rs = tx.execute(query,parameters);
+			System.out.println(rs.resultAsString());
+            tx.commit();
+		}
+		neo4jConfig.shutdown();
 	}
 
 }

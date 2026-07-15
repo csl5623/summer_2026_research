@@ -213,7 +213,7 @@ public class MigrateNeo4j {
             UNWIND $map AS row
             MATCH (p:Package {id:row.package})
             MATCH (vuln:Vulnerability {id: row.vuln_id})
-            MERGE (v)-[:AFFECTS]->(p)
+            MERGE (vuln)-[:AFFECTS]->(p)
             """;
         int batchSize = 1000;
         createNodesInBatches(query, batchSize, vulnOnPackage);
@@ -276,6 +276,20 @@ public class MigrateNeo4j {
         } catch (ProcedureException e) {
             e.printStackTrace();
         }
+    }
+
+    public void vulnerabilityAffectPackageVersion(){
+        List<Map<String,Object>> vulnOnPackage = sqlrepo.vulnerabilityAffectPackageVersion();
+        String query = """
+            UNWIND $map AS row
+            MATCH (v:Version {id:row.version_id})
+            MATCH (vuln:Vulnerability {id: row.vuln_id})
+            MERGE (vuln)-[:AFFECTS_VERSION]->(v)
+            """;
+        int batchSize = 100;
+        
+        createNodesInBatches(query, batchSize, vulnOnPackage);
+
     }
 
 
